@@ -1,0 +1,10 @@
+{
+  "name": "SimpleHtmlDom",
+  "version": "1.0.0",
+  "api": 2,
+  "description": "Simple HTML DOM port to SimpleFramework.",
+  "author": "PeratX",
+  "main": "PeratX\\SimpleHtmlDom\\Loader",
+  "order": 0,
+  "website": "https://github.com/PeratX/SimpleHtmlDom"
+}
