@@ -209,6 +209,12 @@ class SimpleHtmlDom{
 
 	// find dom node by css selector
 	// Paperg - allow us to specify that we want case insensitive testing of the value of the selector.
+	/**
+	 * @param string $selector
+	 * @param null   $idx
+	 * @param bool   $lowercase
+	 * @return null|SimpleHtmlDomNode|SimpleHtmlDomNode[]
+	 */
 	public function find(string $selector, $idx = null, bool $lowercase = false){
 		return $this->root->find($selector, $idx, $lowercase);
 	}

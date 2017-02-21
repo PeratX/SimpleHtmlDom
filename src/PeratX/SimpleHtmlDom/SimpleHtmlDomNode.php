@@ -158,11 +158,6 @@ class SimpleHtmlDomNode{
 	public function outerText(){
 		if($this->tag === 'root') return $this->innerText();
 
-		// trigger callback
-		if($this->dom && $this->dom->callback !== null){
-			call_user_func_array($this->dom->callback, array($this));
-		}
-
 		if(isset($this->_[SimpleHtmlDom::HDOM_INFO_OUTER])) return $this->_[SimpleHtmlDom::HDOM_INFO_OUTER];
 		if(isset($this->_[SimpleHtmlDom::HDOM_INFO_TEXT])) return $this->dom->restoreNoise($this->_[SimpleHtmlDom::HDOM_INFO_TEXT]);
 
@@ -272,8 +267,14 @@ class SimpleHtmlDomNode{
 
 	// find elements by css selector
 	//PaperG - added ability for find to lowercase the value of the selector.
+	/**
+	 * @param string $selector
+	 * @param null   $idx
+	 * @param bool   $lowercase
+	 * @return SimpleHtmlDomNode|SimpleHtmlDomNode[]|null
+	 */
 	public function find(string $selector, $idx = null, bool $lowercase = false){
-		$selectors = $this->parse_selector($selector);
+		$selectors = $this->parseSelector($selector);
 		if(($count = count($selectors)) === 0) return [];
 		$found_keys = [];
 
@@ -432,7 +433,7 @@ class SimpleHtmlDomNode{
 		return false;
 	}
 
-	protected function parse_selector($selector_string){
+	protected function parseSelector($selector_string){
 
 		// pattern of CSS selectors, modified from mootools
 		// Paperg: Add the colon to the attrbute, so that it properly finds <tag attr:ibute="something" > like google does.
