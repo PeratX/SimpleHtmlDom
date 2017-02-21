@@ -238,10 +238,6 @@ class SimpleHtmlDom{
 		unset($this->noise);
 	}
 
-	public function dump($showAttr = true){
-		$this->root->dump($showAttr);
-	}
-
 	// prepare HTML data and init everything
 	protected function prepare(string $str, bool $lowercase = true, bool $stripRN = true, string $defaultBRText = self::DEFAULT_BR_TEXT, string $defaultSpanText = self::DEFAULT_SPAN_TEXT){
 		$this->clear();

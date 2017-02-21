@@ -18,9 +18,14 @@ __Simple HTML DOM port to SimpleFramework__
 
 Introduction
 -------------
-Easy to use simple_html_dom in SimpleFramework.
+The way to convert the plain html into DOM, now available in objects.
+```php
+SimpleHtmlDom::initDomFromFile(string $url, bool $useIncludePath = false, $context = null, $offset = -1, bool $lowercase = true, bool $forceTagsClosed = true, string $targetCharset = SimpleHtmlDom::DEFAULT_TARGET_CHARSET, bool $stripRN = true, string $defaultBRText = SimpleHtmlDom::DEFAULT_BR_TEXT, string $defaultSpanText = SimpleHtmlDom::DEFAULT_SPAN_TEXT)
+SimpleHtmlDom::initDomFromString(string $str, bool $lowercase = true, bool $forceTagsClosed = true, string $targetCharset = SimpleHtmlDom::DEFAULT_TARGET_CHARSET, bool $stripRN = true, string $defaultBRText = SimpleHtmlDom::DEFAULT_BR_TEXT, string $defaultSpanText = SimpleHtmlDom::DEFAULT_SPAN_TEXT)
+```
 
-__TODO: change simple_html_dom into objects__
+ * Original Website: http://sourceforge.net/projects/simplehtmldom/
+ * Original author S.C. Chen <me578022@gmail.com>
 
 Get SimpleHtmlDom
 -------------
