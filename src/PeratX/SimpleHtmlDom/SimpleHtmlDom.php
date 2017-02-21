@@ -719,9 +719,9 @@ class SimpleHtmlDom{
 
 	public function __get($name){
 		switch($name){
-			case 'outertext':
+			case 'outerText':
 				return $this->root->innerText();
-			case 'innertext':
+			case 'innerText':
 				return $this->root->innerText();
 			case 'plaintext':
 				return $this->root->text();
