@@ -154,8 +154,8 @@ class SimpleHtmlDom{
 	}
 
 	// set callback function
-	public function setCallback(callable $callable){
-		$this->callback = $callable;
+	public function setCallback(callable $callback){
+		$this->callback = $callback;
 	}
 
 	// remove callback function
