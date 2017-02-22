@@ -23,6 +23,10 @@ The way to convert the plain html into DOM, now available in objects.
  * Original Website: http://sourceforge.net/projects/simplehtmldom/
  * Original author S.C. Chen <me578022@gmail.com>
 
+How to use
+-------------
+__[PHP Simple HTML DOM Parser Manual](https://github.com/PeratX/SimpleHtmlDom/wiki/PHP-Simple-HTML-DOM-Parser-Manual)__
+
 Get SimpleHtmlDom
 -------------
 __[Releases](https://github.com/PeratX/SimpleHtmlDom/releases)__
