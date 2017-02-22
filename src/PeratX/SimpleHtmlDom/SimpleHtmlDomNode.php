@@ -133,7 +133,7 @@ class SimpleHtmlDomNode{
 		$returnDom = $this;
 
 		while(!is_null($returnDom)){
-				//Logger::debug(2, "Current tag is: " . $returnDom->tag);
+			//Logger::debug(2, "Current tag is: " . $returnDom->tag);
 
 			if($returnDom->tag == $tag){
 				break;
@@ -157,6 +157,11 @@ class SimpleHtmlDomNode{
 	// get dom node's outer text (with tag)
 	public function outerText(){
 		if($this->tag === 'root') return $this->innerText();
+
+		// trigger callback
+		if($this->dom && $this->dom->callback !== null){
+			call_user_func_array($this->dom->callback, [$this]);
+		}
 
 		if(isset($this->_[SimpleHtmlDom::HDOM_INFO_OUTER])) return $this->_[SimpleHtmlDom::HDOM_INFO_OUTER];
 		if(isset($this->_[SimpleHtmlDom::HDOM_INFO_TEXT])) return $this->dom->restoreNoise($this->_[SimpleHtmlDom::HDOM_INFO_TEXT]);
@@ -381,7 +386,7 @@ class SimpleHtmlDomNode{
 					// this is a normal search, we want the value of that attribute of the tag.
 					$nodeKeyValue = $node->attr[$key];
 				}
-					//Logger::debug(2, "testing node: " . $node->tag . " for attribute: " . $key . $exp . $val . " where nodes value is: " . $nodeKeyValue);
+				//Logger::debug(2, "testing node: " . $node->tag . " for attribute: " . $key . $exp . $val . " where nodes value is: " . $nodeKeyValue);
 
 				//PaperG - If lowercase is set, do a case insensitive test of the value of the selector.
 				if($lowercase){
@@ -389,7 +394,7 @@ class SimpleHtmlDomNode{
 				}else{
 					$check = $this->match($exp, $val, $nodeKeyValue);
 				}
-					//Logger::debug(2, "after match: " . ($check ? "true" : "false"));
+				//Logger::debug(2, "after match: " . ($check ? "true" : "false"));
 
 				// handle multiple class
 				if(!$check && strcasecmp($key, 'class') === 0){
@@ -411,7 +416,7 @@ class SimpleHtmlDomNode{
 			unset($node);
 		}
 		// It's passed by reference so this is actually what this function returns.
-			//Logger::debug(1, "EXIT - ret: ", $ret);
+		//Logger::debug(1, "EXIT - ret: ", $ret);
 	}
 
 	protected function match($exp, $pattern, $value){
@@ -444,7 +449,7 @@ class SimpleHtmlDomNode{
 		//		$pattern = "/([\w-:\*]*)(?:\#([\w-]+)|\.([\w-]+))?(?:\[@?(!?[\w-]+)(?:([!*^$]?=)[\"']?(.*?)[\"']?)?\])?([\/, ]+)/is";
 		$pattern = "/([\w-:\*]*)(?:\#([\w-]+)|\.([\w-]+))?(?:\[@?(!?[\w-:]+)(?:([!*^$]?=)[\"']?(.*?)[\"']?)?\])?([\/, ]+)/is";
 		preg_match_all($pattern, trim($selector_string) . ' ', $matches, PREG_SET_ORDER);
-			//Logger::debug(2, "Matches Array: ", $matches);
+		//Logger::debug(2, "Matches Array: ", $matches);
 
 		$selectors = [];
 		$result = [];
@@ -561,7 +566,7 @@ class SimpleHtmlDomNode{
 			$sourceCharset = strtoupper($this->dom->_charset);
 			$targetCharset = strtoupper($this->dom->_target_charset);
 		}
-			//Logger::debug(3, "source charset: " . $sourceCharset . " target charaset: " . $targetCharset);
+		//Logger::debug(3, "source charset: " . $sourceCharset . " target charaset: " . $targetCharset);
 
 		if(!empty($sourceCharset) && !empty($targetCharset) && (strcasecmp($sourceCharset, $targetCharset) != 0)){
 			// Check if the reported encoding could have been incorrect and the text is actually already UTF-8
@@ -734,10 +739,6 @@ class SimpleHtmlDomNode{
 
 	function childNodes($idx = -1){
 		return $this->children($idx);
-	}
-
-	function previousSibling(){
-		return $this->prevSibling();
 	}
 
 	function hasChildNodes(){

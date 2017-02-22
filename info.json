@@ -1,6 +1,6 @@
 {
   "name": "SimpleHtmlDom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "api": 2,
   "description": "Simple HTML DOM port to SimpleFramework.",
   "author": "PeratX",

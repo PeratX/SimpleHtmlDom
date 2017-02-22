@@ -101,6 +101,7 @@ class SimpleHtmlDom{
 	/** @var SimpleHtmlDomNode[] */
 	public $nodes = [];
 	public $lowercase = false;
+	public $callback = null;
 	// Used to keep track of how large the text was when we started.
 	public $originalSize;
 	public $size;
@@ -150,6 +151,16 @@ class SimpleHtmlDom{
 		}
 		// Forcing tags to be closed implies that we don't trust the html, but it can lead to parsing errors if we SHOULD trust the html.
 		$this->_targetCharset = $targetCharset;
+	}
+
+	// set callback function
+	public function setCallback(callable $callable){
+		$this->callback = $callable;
+	}
+
+	// remove callback function
+	public function removeCallback(){
+		$this->callback = null;
 	}
 
 	public function __destruct(){
@@ -668,7 +679,7 @@ class SimpleHtmlDom{
 
 		for($i = $count - 1; $i > -1; --$i){
 			$key = '___noise___' . sprintf('% 5d', count($this->noise) + 1000);
-				//Logger::debug(2, 'key is: ' . $key);
+			//Logger::debug(2, 'key is: ' . $key);
 			$idx = ($remove_tag) ? 0 : 1;
 			$this->noise[$key] = $matches[$i][$idx][0];
 			$this->doc = substr_replace($this->doc, $key, $matches[$i][$idx][1], strlen($matches[$i][$idx][0]));
@@ -687,7 +698,7 @@ class SimpleHtmlDom{
 			// Sometimes there is a broken piece of markup, and we don't GET the pos+11 etc... token which indicates a problem outside of us...
 			if(strlen($text) > $pos + 15){
 				$key = '___noise___' . $text[$pos + 11] . $text[$pos + 12] . $text[$pos + 13] . $text[$pos + 14] . $text[$pos + 15];
-					//Logger::debug(2, 'located key of: ' . $key);
+				//Logger::debug(2, 'located key of: ' . $key);
 
 				if(isset($this->noise[$key])){
 					$text = substr($text, 0, $pos) . $this->noise[$key] . substr($text, $pos + 16);
