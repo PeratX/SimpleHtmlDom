@@ -18,7 +18,7 @@
 
 namespace PeratX\SimpleHtmlDom;
 
-use sf\console\Logger;
+use PeratX\SimpleFramework\Console\Logger;
 
 class SimpleHtmlDom{
 

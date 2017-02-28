@@ -13,7 +13,7 @@
 
 namespace PeratX\SimpleHtmlDom;
 
-use sf\module\Module;
+use PeratX\SimpleFramework\Module\Module;
 
 class Loader extends Module{
 	public  function load(){
