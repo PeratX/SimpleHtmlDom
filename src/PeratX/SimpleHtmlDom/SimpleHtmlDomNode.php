@@ -8,7 +8,8 @@
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
  *
- * @author PeratX
+ * @author iTXTech
+ * @website https://itxtech.org
  */
 
 /**
