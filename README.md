@@ -1,7 +1,7 @@
 SimpleHtmlDom
 ===================
 
-__Simple HTML DOM Parser port to [SimpleFramework](https://github.com/PeratX/SimpleFramework), optimized for those html files which cannot be correctly parsed by DOMDocument__
+__Simple HTML DOM Parser port to [SimpleFramework](https://github.com/iTXTech/SimpleFramework), optimized for those html files which cannot be correctly parsed by DOMDocument__
 
 	This program is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
